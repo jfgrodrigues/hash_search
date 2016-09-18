@@ -17,7 +17,7 @@ Com os pré-requisitos preenchidos, faça o clone dos arquivos fonte.
 Abra o console do Node na pasta onde os arquivos-fontes foram baixados, na pasta '/back' rode o comando
 
 ```shell
-npm install hash_search
+$npm install
 ```
 
 ### Configuração
