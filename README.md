@@ -8,7 +8,7 @@ Serviço de busca de hashtags no Instagram, com possibilidade de salvar essas bu
 
 São pré-requisitos para instalar e rodar o serviço:
 1. Ter o NodeJS (https://nodejs.org/en/) e o MongoDB (https://www.mongodb.com/download-center) instalados e rodando no host. 
-2. Ter um client da API do Instagram com o scope 'public_content' com status permitido. Sem esse requisito não será possível rodar corretamente o serviço, pois é necessário para a realização da autenticação para integrar com o  Instagram e realizar as buscas.
+2. Ter um client da API do Instagram https://www.instagram.com/developer/clients/manage/ com o scope 'public_content' com status permitido. Sem esse requisito não será possível rodar corretamente o serviço, pois é necessário para a realização da autenticação para integrar com o  Instagram e realizar as buscas.
 
 Com os pré-requisitos preenchidos, faça o clone dos arquivos fonte.
 
