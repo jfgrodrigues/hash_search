@@ -1,0 +1,41 @@
+<div class="container" ng-show="user">
+	<img src="{{user.user.profile_picture}}" class="img-responsive center-block" alt="Imagem de contato">
+	<h2>Seja muito bem vindo, <b>{{user.user.full_name}}</b>!</h2>
+	<p class="lead">Para consultar uma <i>hashtag</i> no Instagram, digite abaixo o que deseja consultar:</p>
+	<input ng-model="query" class="form-control" type="text" id="q" name="q" placeholder="Digite o que deseja buscar (sem a hash (#)). Ex.: sunset" /><br />
+	<a type="button" class="btn btn-primary btn-block" href="{{server}}/search/hashtag?q={{query}}&access_token={{user.access_token}}"><span class="glyphicon glyphicon-search"></span> Pesquisar</a><br />
+	<div id="busca" ng-show="search!=undefined">
+		<div class="row">
+			<div class="col-xs-4 col-md-4" ng-repeat="result in search">
+				<a href="{{result.images.standard_resolution.url}}" target="_blank" class="thumbnail">
+					<img src="{{result.images.low_resolution.url}}" alt="imagem hashtag" class="img-responsive">
+				</a>
+			</div>
+		</div>
+		<a type="button" class="btn btn-success btn-block" href="{{server}}/search/save"><span class="glyphicon glyphicon-floppy-save"></span> Salvar</a><br />
+	</div>
+	<div id="buscas_salvas">
+		<h3>Buscas Salvas</h3>
+		<table class="table table-striped container">
+			<thead>
+				<tr>
+					<th>Dia / hora da busca</th>
+					<th>Quantidade de retornos</th>
+					<th>Visualizar resultado</th>
+					<th>Apagar busca</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="search in savedSearches | orderBy: '-timestamp'">
+					<td>{{search.timestamp | date:'dd/MM/yyyy HH:mm'}}</td>
+					<td>{{search.data.length}}</th>
+					<td><button type="button" class="btn btn-info btn-block" ng-click="visualizarBuscaSalva(search.data)"><span class="glyphicon glyphicon-eye-open"></span> visualizar</button></td>
+					<td><a type="button" class="btn btn-danger btn-block" href="{{server}}/search/saved/delete?id={{search._id}}"><span class="glyphicon glyphicon-remove"></span> apagar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div ng-show="!user" class="container">
+	<p class="lead">Para acessar esta página, é necessário ter autentiacado com o <i>Instagram</i>. <a href="#/privacy-policy">Acesse aqui</a> os termos de uso e política de pricavidade e faça a autenticação.</p>
+</div>
