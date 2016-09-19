@@ -3,7 +3,6 @@ angular.module("hashSearch").controller("hashSearchCtrl", function($scope, $http
 	
 	var getUser = function(){
 		$http.get($scope.server+'/user', { withCredentials: true }).success(function(data){
-			console.log(data)
 			$scope.user = data;
 		});
 	}
@@ -16,7 +15,6 @@ angular.module("hashSearch").controller("hashSearchCtrl", function($scope, $http
 	
 	var getSearch = function(){
 		$http.get($scope.server+'/search/result', { withCredentials: true }).success(function(data){
-			console.log(data.data)
 			$scope.search = data.data;
 		});
 	}
@@ -47,10 +45,21 @@ angular.module("hashSearch").controller("hashSearchCtrl", function($scope, $http
 		});
 	}
 	
+	var newSearch;
+	if(typeof newSearch == 'undefined'){ newSearch = true } else { newSearch = newSearch };
+	
 	$scope.visualizarBuscaSalva = function(data){
 		$scope.search = data;
+		newSearch = false;
 	}
 	
+	$scope.setNewSearch = function(test){
+		newSearch = test;
+	}
+	
+	$scope.isNewSearch = function(){
+		return newSearch;
+	}
 	
 	getUser();
 	getOauth();

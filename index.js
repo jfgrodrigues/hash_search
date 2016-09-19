@@ -2,19 +2,20 @@ var express = require('express')
 	,app = express();
 var request = require('request');
 var cookie = require('cookie');
-var oauth = require('./oauth');
+var config = require('./config');
 
 var session = new Array();
 var search = new Array();
 var search_token = new Array();
 
-var host = 'http://localhost';
+var oauth = config.oauth;
+var host = config.server.host;
+var DB_url = config.db.url;
 var apiUrl = 'https://api.instagram.com';
-var DB_url = 'mongodb://localhost:27017/hash_search';
 var oauthUrl = apiUrl+'/oauth/access_token';
 var searchHashTagUrlInicio = apiUrl+'/v1/tags/';
 var searchHashTagUrlFim = '/media/recent?access_token=';
-var port = 8080;
+var port = config.server.port;
 var hora = new Date();
 
 var MongoClient = require('mongodb').MongoClient

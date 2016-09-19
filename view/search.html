@@ -3,7 +3,7 @@
 	<h2>Seja muito bem vindo, <b>{{user.user.full_name}}</b>!</h2>
 	<p class="lead">Para consultar uma <i>hashtag</i> no Instagram, digite abaixo o que deseja consultar:</p>
 	<input ng-model="query" class="form-control" type="text" id="q" name="q" placeholder="Digite o que deseja buscar (sem a hash (#)). Ex.: sunset" /><br />
-	<a type="button" class="btn btn-primary btn-block" href="{{server}}/search/hashtag?q={{query}}&access_token={{user.access_token}}"><span class="glyphicon glyphicon-search"></span> Pesquisar</a><br />
+	<a type="button" class="btn btn-primary btn-block" href="{{server}}/search/hashtag?q={{query}}&access_token={{user.access_token}}" ng-click="setNewSearch(true)"><span class="glyphicon glyphicon-search"></span> Pesquisar</a><br />
 	<div id="busca" ng-show="search!=undefined">
 		<div class="row">
 			<div class="col-xs-4 col-md-4" ng-repeat="result in search">
@@ -12,7 +12,7 @@
 				</a>
 			</div>
 		</div>
-		<a type="button" class="btn btn-success btn-block" href="{{server}}/search/save"><span class="glyphicon glyphicon-floppy-save"></span> Salvar</a><br />
+		<a type="button" class="btn btn-success btn-block" href="{{server}}/search/save" ng-show="isNewSearch()"><span class="glyphicon glyphicon-floppy-save"></span> Salvar</a><br />
 	</div>
 	<div id="buscas_salvas">
 		<h3>Buscas Salvas</h3>
