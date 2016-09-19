@@ -8,26 +8,41 @@ Serviço de busca de hashtags no Instagram, com possibilidade de salvar essas bu
 
 São pré-requisitos para instalar e rodar o serviço:
 
-1. Ter o NodeJS (https://nodejs.org/en/) e o MongoDB (https://www.mongodb.com/download-center) instalados e rodando no host. 
+1. Ter o NodeJS com npm (https://nodejs.org/en/) e o MongoDB (https://www.mongodb.com/download-center) instalados e rodando no host. 
 
 2. Ter um client da API do Instagram (https://www.instagram.com/developer/clients/manage/) com o scope 'public_content' com status permitido. Sem esse requisito não será possível rodar corretamente o serviço, pois é necessário para a realização da autenticação para integrar com o  Instagram e realizar as buscas.
 
-Com os pré-requisitos preenchidos, faça o clone dos arquivos fonte.
+Com os pré-requisitos atendidos, baixe e instale os pacotes da hash_search.
 
 ### Instalação
 
-Abra o console do Node na pasta onde os arquivos-fontes foram baixados e rode o comando:
+Faça o clone dos arquivos fonte pelo console:
 
 ```shell
-$npm install
+$git clone https://github.com/jfgrodrigues/hash_search.git
+```
+
+Depois de baixar os arquivos fonte, rode o npm para instalar os pacotes do node:
+
+```shell
+$npm install hash_search
 ```
 
 ### Configuração
 
 Alguns parâmetros precisam ser configurados para que a aplicação rode corretamente. Abra para edição o arquivo 'config.js' e preencha os valores de "Client ID", "Client Secret" e "redirect URI" do client da API do Instagram na key 'oauth', os dados do servidor (host/port) na key 'server' e os dados de conexão com o banco de dades (url) na key 'db'. Isto feito, vá para a pasta '/js/controller' e abra 'hashSearchCtrl.js' (também com um editor de texto) e configure '$scope.server', na segunda linha, com o endereço do servidor (atente para a porta). Obs.: se o deploy for feito para rodar localmente, não é necessário mudar os parâmetros de endereço pré-configurados (apenas inserir os valores de configuração do API client).
 
-Com as configurações feitas, certifique-se de que o serviço do mongodb (mongod) está rodando, volte ao console do node e rode o comando de inicialização:
+Com as configurações feitas, certifique-se de que o serviço do mongodb (mongod) está rodando (abra um outro console e digite 'mongod')
 
 ```shell
+$mongod
+```
+
+Confira pelo console se o serviço está rodando corretamente, então vá para a pasta para onde os arquivos do 'hash_search foram baixados e inicie o servidor (em node) com o npm:
+
+```shell
+$cd hash_search
 $npm start
 ```
+
+Com o browser, acesse a aplicação pela interface web (se estiver rodando num servidor web local, digite 'localhost').
