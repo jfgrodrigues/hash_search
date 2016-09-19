@@ -24,9 +24,9 @@ $npm install
 
 ### Configuração
 
-Alguns parâmetros precisam ser configurados para que a aplicação rode corretamente. Também na pasta raiz existe um arquivo chamado 'oauth.js'. Edite esse arquivo inserindo os valores de "Client ID", "Client Secret" e "redirect URI" do client da API do Instagram. Após isso, abra o arquivo 'index.js' com algum editor de texto e configure a variável 'host' com o endereço do client. Verifique também se é necessário mudar o valor da variável 'DB_url'. Se for rodar localmente, não é necessário alterar. Na variável 'port' é configurado o valor da porta em que o servidor vai rodar. Isto feito, vá para a pasta '/js/controller' e abra 'hashSearchCtrl.js' (também com um editor de texto) e configure '$scope.server', na segunda linha, com o endereço do servidor (atente para a porta). Obs.: se o deploy for feito para rodar localmente, não é necessário mudar os parâmetros de endereço.
+Alguns parâmetros precisam ser configurados para que a aplicação rode corretamente. Abra para edição o arquivo 'config.js' e preencha os valores de "Client ID", "Client Secret" e "redirect URI" do client da API do Instagram na key 'oauth', os dados do servidor (host/port) na key 'server' e os dados de conexão com o banco de dades (url) na key 'db'. Isto feito, vá para a pasta '/js/controller' e abra 'hashSearchCtrl.js' (também com um editor de texto) e configure '$scope.server', na segunda linha, com o endereço do servidor (atente para a porta). Obs.: se o deploy for feito para rodar localmente, não é necessário mudar os parâmetros de endereço pré-configurados (apenas inserir os valores de configuração do API client).
 
-Com as configurações feitas, basta voltar ao console do node e rodar o comando de inicialização:
+Com as configurações feitas, certifique-se de que o serviço do mongodb (mongod) está rodando, volte ao console do node e rode o comando de inicialização:
 
 ```shell
 $npm start
