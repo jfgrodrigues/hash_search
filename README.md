@@ -22,10 +22,11 @@ Faça o clone dos arquivos fonte pelo console:
 $git clone https://github.com/jfgrodrigues/hash_search.git
 ```
 
-Depois de baixar os arquivos fonte, rode o npm para instalar os pacotes do node:
+Depois de baixar os arquivos fonte, vá para a pastarecém-baixada (hash_search) e rode o npm para instalar os pacotes do node:
 
 ```shell
-$npm install hash_search
+$cd hash_search
+$npm install
 ```
 
 ### Configuração
@@ -38,10 +39,9 @@ Com as configurações feitas, certifique-se de que o serviço do mongodb (mongo
 $mongod
 ```
 
-Confira pelo console se o serviço está rodando corretamente, então vá para a pasta para onde os arquivos do 'hash_search foram baixados e inicie o servidor (em node) com o npm:
+Se o serviço estiver no ar, inicie o servidor (node) com o npm:
 
 ```shell
-$cd hash_search
 $npm start
 ```
 
