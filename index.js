@@ -15,13 +15,14 @@ var apiUrl = 'https://api.instagram.com';
 var oauthUrl = apiUrl+'/oauth/access_token';
 var searchHashTagUrlInicio = apiUrl+'/v1/tags/';
 var searchHashTagUrlFim = '/media/recent?access_token=';
-var port = config.server.port;
+//var port = config.server.port;
 var hora = new Date();
 
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 
+const PORT = process.env.PORT || config.server.port;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -222,6 +223,6 @@ app.get('/search/saved/delete', function(req, res){
 	
 });
 
-app.listen(port, function(){
-	console.log('Listening on port '+port+' \nStarted @: '+hora);
+app.listen(PORT, function(){
+	console.log('Listening on port '+PORT+' \nStarted @: '+hora);
 });
